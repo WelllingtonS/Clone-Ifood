@@ -143,10 +143,10 @@
 }
 
 .google{
-    background: url('../imagens/iconeGoogle.png');
+    src:'../imagens/iconeGoogle.png'
     
 }
 
 .facebook{
-    background: url('../imagens/iconeFacebook.png');
+    image-rendering: url('../imagens/iconeFacebook.png');
 }
