@@ -5,6 +5,8 @@ import { FaUser, FaLock} from "react-icons/fa";
 import {auth, provider} from "../../service/firebase"
 import {useState} from 'react';
 import { signInWithPopup } from 'firebase/auth';
+import { FaFacebookF } from "react-icons/fa";
+import { FaGoogle } from "react-icons/fa";
 
 
 
@@ -46,12 +48,12 @@ const LoginForm = () => {
                 <button class='btn' type='submit'> Login </button> {/* -------------- Botão login --------------*/}
 
                
-                <button class="btn" className="facebook"> Logar com Facebook </button> {/* -------------- Caixa de login Facebook --------------*/}
+                <button className="btn"> <FaFacebookF className='iconAlign'/> Fazer login com o Facebook </button> {/* -------------- Caixa de login Facebook --------------*/}
                     
-                    <div class="btn"  onClick={handleGoogleSignIn}>
-                        <img src='../imagens/iconeGoogle.png'/>
-                        Logar com Google
-                        </div>{/* -------------- Caixa de login Google --------------*/}
+                <button className="btn"  onClick={handleGoogleSignIn}>
+                <FaGoogle className='iconAlign'/>
+                Fazer login com o Google
+                </button>{/* -------------- Caixa de login Google --------------*/}
                
 
 
