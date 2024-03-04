@@ -2,30 +2,28 @@
 import React from 'react';
 import './LoginForm.css';
 import { FaUser, FaLock} from "react-icons/fa";
-import {auth, provider} from "../../service/firebase"
+import firebase from "../../service/firebase"
 import {useState} from 'react';
 import { signInWithPopup } from 'firebase/auth';
 import { FaFacebookF } from "react-icons/fa";
 import { FaGoogle } from "react-icons/fa";
 
 
+export default ({onReceiveGoogle}) => {
 
-const LoginForm = () => {
     const [user, setUSer] = useState(null)
 
-    const handleGoogleSignIn = ()=>{
-        signInWithPopup(auth, provider).then((result)=>{
-            const user = result.user;
-            console.log(user)
-            setUSer(user);
-        }).catch((err)=>{
-            console.log(err);
-        })
-    }
+    const actionLoginGoogle = async ()=>{
+        let result = await firebase.googleLogar()
 
-    const handleLogout=()=>{
-        setUSer(null)
+        if(result){
+            onReceiveGoogle(result.user)
+                }else{
+            alert('Error')
+        }
+
     }
+    
     return (
         <div className='wrapper'>
             
@@ -50,7 +48,7 @@ const LoginForm = () => {
                
                 <button className="btn"> <FaFacebookF className='iconAlign'/> Fazer login com o Facebook </button> {/* -------------- Caixa de login Facebook --------------*/}
                     
-                <button className="btn"  onClick={handleGoogleSignIn}>
+                <button className="btn"  onClick={actionLoginGoogle}>
                 <FaGoogle className='iconAlign'/>
                 Fazer login com o Google
                 </button>{/* -------------- Caixa de login Google --------------*/}
@@ -62,5 +60,3 @@ const LoginForm = () => {
         
     )
 }
-
-export default LoginForm;
