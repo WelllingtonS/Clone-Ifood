@@ -17,10 +17,21 @@ function App() {
     }
     setUser(newUser)
   }
+  
+  const actionLoginDataFacebook = async (u) =>{
+    let newUser = {
+      id: u.uid,
+      name : u.displayName,
+      avatar : u.photoURL
+    }
+    setUser(newUser)
+  }
 
   if(user === null){
     return(
-    <LoginForm onReceiveGoogle={actionLoginDataGoogle}/>
+    <LoginForm onReceiveGoogle={actionLoginDataGoogle}
+    onReceiveFacebook={actionLoginDataFacebook}
+    />
     )
   }
 

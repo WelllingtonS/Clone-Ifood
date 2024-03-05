@@ -8,6 +8,18 @@
     opacity:0.9;
 }
 
+.bodyLogin {
+    font-family: sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    min-height: 100vh;
+    background: url(../imagens/fundoIfood.jpeg);
+  }
+
+
 .wrapper h1{
     font-size:36px;
     text-align: center;

@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 /* eslint-disable jsx-a11y/alt-text */
 import React from 'react';
 import './LoginForm.css';
@@ -7,24 +8,33 @@ import {useState} from 'react';
 import { signInWithPopup } from 'firebase/auth';
 import { FaFacebookF } from "react-icons/fa";
 import { FaGoogle } from "react-icons/fa";
+import facebookAuth from "../../service/firebase"
 
 
-export default ({onReceiveGoogle}) => {
+export default ({onReceiveGoogle, onReceiveFacebook}) => {
 
     const [user, setUSer] = useState(null)
 
     const actionLoginGoogle = async ()=>{
         let result = await firebase.googleLogar()
-
         if(result){
             onReceiveGoogle(result.user)
                 }else{
             alert('Error')
         }
+    }
 
+    async function facebookAuthButtonClicked() {
+        let result = await firebase.facebookAuth()
+        if(result){
+            onReceiveFacebook(result.user)
+                }else{
+            alert('Error')
+        }
     }
     
     return (
+        <body className='bodyLogin'>
         <div className='wrapper'>
             
                 <h1>Login</h1>
@@ -46,7 +56,9 @@ export default ({onReceiveGoogle}) => {
                 <button class='btn' type='submit'> Login </button> {/* -------------- Botão login --------------*/}
 
                
-                <button className="btn"> <FaFacebookF className='iconAlign'/> Fazer login com o Facebook </button> {/* -------------- Caixa de login Facebook --------------*/}
+                <button className="btn" onClick={facebookAuthButtonClicked}> 
+                <FaFacebookF className='iconAlign'/>
+                 Fazer login com o Facebook </button> {/* -------------- Caixa de login Facebook --------------*/}
                     
                 <button className="btn"  onClick={actionLoginGoogle}>
                 <FaGoogle className='iconAlign'/>
@@ -57,6 +69,7 @@ export default ({onReceiveGoogle}) => {
 
             
             </div>
+            </body>
         
     )
 }

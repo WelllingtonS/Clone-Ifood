@@ -3,6 +3,7 @@ import { getAuth, GoogleAuthProvider} from 'firebase/auth'
 import firebase from 'firebase/app'
 import 'firebase/firebase-auth'
 import 'firebase/firebase-firestore'
+import { FacebookAuthProvider } from 'firebase/firebase-auth';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAuh0IJ2V3UYenQr7KgR_dHXcZdv52iQJo",
@@ -17,8 +18,6 @@ const firebaseConfig = {
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 const db = firebaseApp.firestore()
 
-{/*const provider = new GoogleAuthProvider()*/}
-
 // eslint-disable-next-line import/no-anonymous-default-export
 export default{
   googleLogar: async () => {
@@ -26,4 +25,12 @@ export default{
     let result = await firebase.auth().signInWithPopup(provider)
     return result
   }
+
+  ,facebookAuth: async () => {
+    const providere = new firebase.auth.FacebookAuthProvider();
+    const fbAuth = firebase.auth().signInWithPopup(providere)
+    return fbAuth  
+  }
 }
+
+
