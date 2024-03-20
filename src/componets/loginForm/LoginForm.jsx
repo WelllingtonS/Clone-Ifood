@@ -13,8 +13,6 @@ import facebookAuth from "../../service/firebase"
 
 export default ({onReceiveGoogle, onReceiveFacebook}) => {
 
-    const [user, setUSer] = useState(null)
-
     const actionLoginGoogle = async ()=>{
         let result = await firebase.googleLogar()
         if(result){
@@ -39,17 +37,17 @@ export default ({onReceiveGoogle, onReceiveFacebook}) => {
             
                 <h1>Login</h1>
                                             
-                <div className='input-box'> {/* -------------- Caixa de texto E-Mail  --------------*/}  
+              <div className='input-box'> {/* -------------- Caixa de texto E-Mail  --------------*/}  
                     <input type="text" placeholder='Email' required /> 
                     <FaUser className='icon' />
                 </div>
                 <div className='input-box'> {/* -------------- Caixa de texto Password --------------*/} 
-                    <input type="Password" placeholder='Password' required />
+                  <input type="Password" placeholder='Password' required />
                     <FaLock className='icon'/>
                 </div>
 
                 <div className="remember-forgot"> {/* -------------- Esqueceu a senha e lembrar-me --------------*/}
-                    <label><input type="checkbox"/>Lembrar-me</label>
+                  <label><input type="checkbox"/>Lembrar-me</label>
                     <a href="#">Esqueceu a senha ?</a>
                 </div>
 

@@ -52,10 +52,18 @@
     font-size: 20pt;
     text-align: end;
     position: relative;
-
-
 }
 
+.legenda {
+    text-align: left;
+    padding-inline-start: 10px;
+    padding-inline-end: 10px;
+    font-weight: bold;
+}
+
+.textLeft{
+    margin-left: 20%;
+}
 
 nav ul li::after{
     content: "  ";

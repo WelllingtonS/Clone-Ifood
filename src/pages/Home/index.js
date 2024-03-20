@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import './style.css';
 import Logo from './logoIfood.png'
 import { FaUserGear } from "react-icons/fa6";
-import {Link} from "react-router-dom";
-import Routes from '../../Routes'
+import {Link, } from "react-router-dom";
 
 function Home (){
+    const nome = localStorage.getItem('name')
+    const avatar = localStorage.getItem('avatar')
     return(
         <body className="bodyHome">
              <header className="headerMenu">
@@ -21,8 +22,8 @@ function Home (){
                     </nav>
                     <div className="usuario">
                     
-                        <ul><li><Link to = "/cadastro">Olá, Wellington</Link></li></ul>
-                       {/*<p><Link to = "/cadastro"/>Olá, Wellington <FaUserGear  /></p>*/}
+                        <div>Olá,    {nome}     <img src={avatar}/>                    <Link to = "/cadastro">
+                            <FaUserGear  /></Link></div>
 
                     </div> {/*Usuario*/}
                 </div>{/* interface */}
@@ -33,5 +34,6 @@ function Home (){
         </body>
     );
 }
+
 
 export default Home;
